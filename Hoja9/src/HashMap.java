@@ -2,15 +2,17 @@
  * @author Ingebor Rubio
  *
  */
-public class HashMap <K,V> implements iMap {
+public class HashMap <K extends Comparable<K>,V> implements iMap <K ,V>{
 
-	protected HashMap<K,V> hashMap;
+	protected HashMap<Association> hashMap;
 	
-	public void put(String key,String value) {
+	@Override
+	public void put(K key,V value) {
 		hashMap.put(key,value);
 	}
 	
-	public String get(Object key) {
+	@Override
+	public String get(K key) {
 		return hashMap.get(key);
 	}
 

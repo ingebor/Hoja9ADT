@@ -2,11 +2,11 @@
  * @author Ingebor Rubio
  *
  */
-public class Factory {
+public class Factory<K extends Comparable<K>,V>{
 
-	public iMap getType(int option) {
+	public iMap<K,V> getType(int option) {
 		if(option==1) {
-			return new HashMap();
+			return new HashMap<K,V>();
 		}
 		else
 			return null;

@@ -9,12 +9,14 @@ import java.util.HashMap;
  * @date 26/04/2020
  * Hoja de trabajo 9 Estructura de Datos
  */
+@SuppressWarnings("unused")
 public class Main {
 
 	/**
 	 * @param args
 	 * @throws Exception 
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void main(String[] args) throws Exception {
 		Factory factory = new Factory();
 		File archivoSpanish = new File("Spanish.txt");
@@ -22,7 +24,7 @@ public class Main {
 		FileReader fileR = new FileReader(archivoSpanish);
 		BufferedReader buffR = new BufferedReader(fileR);
 		Scanner read = new Scanner(System.in);
-		HashMap<String, String> hashMap = new HashMap<String,String>();
+		//HashMap<String, String> hashMap = new HashMap<String,String>();
 		
 		System.out.println("------------------");
 		System.out.println("|   Bienvenido   |");
@@ -39,7 +41,7 @@ public class Main {
 						System.out.println("No ha ingresado una opcion correcta");
 					}
 					else if(option==1 || option==2) {
-						//iMap thisThing = factory.getType(option);
+						iMap<String,String> thisThing = factory.getType(option);
 						
 						while((words = buffR.readLine())!=null){
 							String[] eachLine = words.split("	");
@@ -47,7 +49,7 @@ public class Main {
 							String[] valuesOfTraduc = traduc.split(",");
 							String ingles = eachLine[0].toLowerCase();
 							String espanol = valuesOfTraduc[0].toLowerCase();
-							hashMap.put(ingles, espanol);
+							thisThing.put(ingles, espanol);
 						}
 						if(archivoTexto.exists()) {
 							System.out.println("\nDesea traducir lo siguiente: ");
@@ -60,7 +62,7 @@ public class Main {
 							
 							for(int i=0;i<numOfWords;i++) {
 								String traduced = "";
-								String got = hashMap.get(eachWord[i]);
+								String got = thisThing.get(eachWord[i]);
 								if(got==null) {
 									traduced=("*")+eachWord[i]+("*");
 								}
@@ -68,7 +70,7 @@ public class Main {
 									traduced=got;
 								fSentence = fSentence + (" ") + traduced;
 							}
-							System.out.println("\nSu oracion traducida es "+fSentence+"\n");
+							System.out.println("\nSu oracion traducida es: "+fSentence+"\n");
 							System.out.println("----------------------------------------------------------------------------------------");
 							translate.close();
 							
@@ -91,7 +93,7 @@ public class Main {
 			System.out.println("El archivo no se ha encontrado, usar el proporcionado por favor");
 		
 		buffR.close();
-		
+		read.close();
 		
 		
 	}
