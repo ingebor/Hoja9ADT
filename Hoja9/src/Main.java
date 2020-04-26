@@ -1,8 +1,8 @@
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
+import java.util.HashMap;
 
 /**
  * @author Ingebor Rubio 19003, Pablo Reyna 19
@@ -21,43 +21,82 @@ public class Main {
 		File archivoTexto = new File("texto.txt");
 		FileReader fileR = new FileReader(archivoSpanish);
 		BufferedReader buffR = new BufferedReader(fileR);
+		Scanner read = new Scanner(System.in);
+		//HashMap<String, String> hashMap = new HashMap<String,String>();
 		
 		System.out.println("------------------");
 		System.out.println("|   Bienvenido   |");
 		System.out.println("------------------");
-		System.out.println("Desea traducir lo siguiente: ");
+		//System.out.println("Desea traducir lo siguiente: ");
+		
+		System.out.println("Opciones");
 		
 		if(archivoSpanish.exists()) {
 			String words="";
-			String muestra = "";
-			int count = 0;
-			while((words = buffR.readLine())!=null && count <20) {
-				String[] eachLine = words.split("	");
-				String traduc = eachLine[1];
-				String[] valuesOfTraduc = traduc.split(",");
-				String ingles = eachLine[0].toLowerCase();
-				String espanol = valuesOfTraduc[0].toLowerCase();
-				muestra = muestra + "\n" +ingles + " significa: " + espanol;
-				count++;
+			boolean flag = true;
+			while(flag) {
+				System.out.println("¿De que forma desea realizar la traduccion? \n1. HashMap \n2.  SplayTree \n3. Deseo salir del programa");
+				try {
+					int option = read.nextInt();
+					if(option<1 || option>3) {
+						System.out.println("No ha ingresado una opcion correcta");
+					}
+					else if(option==1 || option==2) {
+						System.out.println("Opciones correctas");
+						@SuppressWarnings("rawtypes")
+						iMap thisThing = factory.getType(option);
+						
+						while((words = buffR.readLine())!=null){
+							String[] eachLine = words.split("	");
+							String traduc = eachLine[1];
+							String[] valuesOfTraduc = traduc.split(",");
+							String ingles = eachLine[0].toLowerCase();
+							String espanol = valuesOfTraduc[0].toLowerCase();
+							thisThing.put(ingles, espanol);
+						}
+						
+						if(archivoTexto.exists()) {
+							Scanner translate = new Scanner(archivoTexto);
+							String sentence = translate.nextLine().toLowerCase();
+							System.out.println(sentence);
+							String[] eachWord = sentence.split(" ");
+							String fSentence = "";
+							int numOfWords = eachWord.length;
+							
+							for(int i=0;i<numOfWords;i++) {
+								String traduced = "";
+								String got = thisThing.get(eachWord[i]);
+								if(got==null) {
+									traduced=("*")+eachWord[i]+("*");
+								}
+								else
+									traduced=got;
+								fSentence = fSentence + (" ") + traduced;
+							}
+							System.out.println("\nSu oracion traducida es "+fSentence);
+							translate.close();
+						}
+						else
+							System.out.println("El archivo no se ha encontrado, usar el proporcionado por favor");
+					}
+					else if(option==3) {
+						System.out.println("Saliendo, gracias por utilizar el programa");
+						flag = false;
+					}
+
+				}
+				catch(Exception E) {
+					System.out.println("error");
+				}
 			}
-			System.out.println(muestra);
-			
 		}
+		else
+			System.out.println("El archivo no se ha encontrado, usar el proporcionado por favor");
+		
 		buffR.close();
 		
-		if(archivoTexto.exists()) {
-			Scanner translate = new Scanner(archivoTexto);
-			String sentence = translate.nextLine().toLowerCase();
-			System.out.println(sentence);
-			String[] words = sentence.split(" ");
-			String fSentence = "";
-			int numOfWords = words.length;
-			
-			for(int i = 0;i<numOfWords;i++) {
-				//Código para traducir
-			}
-			translate.close();
-		}
+		
+		
 	}
 
 }
