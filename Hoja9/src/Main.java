@@ -22,29 +22,24 @@ public class Main {
 		FileReader fileR = new FileReader(archivoSpanish);
 		BufferedReader buffR = new BufferedReader(fileR);
 		Scanner read = new Scanner(System.in);
-		//HashMap<String, String> hashMap = new HashMap<String,String>();
+		HashMap<String, String> hashMap = new HashMap<String,String>();
 		
 		System.out.println("------------------");
 		System.out.println("|   Bienvenido   |");
-		System.out.println("------------------");
-		//System.out.println("Desea traducir lo siguiente: ");
-		
-		System.out.println("Opciones");
+		System.out.println("------------------");		
 		
 		if(archivoSpanish.exists()) {
 			String words="";
 			boolean flag = true;
 			while(flag) {
-				System.out.println("¿De que forma desea realizar la traduccion? \n1. HashMap \n2.  SplayTree \n3. Deseo salir del programa");
+				System.out.println("¿De que forma desea realizar la traduccion? \n1. HashMap \n2. SplayTree \n3. Deseo salir del programa");
 				try {
 					int option = read.nextInt();
 					if(option<1 || option>3) {
 						System.out.println("No ha ingresado una opcion correcta");
 					}
 					else if(option==1 || option==2) {
-						System.out.println("Opciones correctas");
-						@SuppressWarnings("rawtypes")
-						iMap thisThing = factory.getType(option);
+						//iMap thisThing = factory.getType(option);
 						
 						while((words = buffR.readLine())!=null){
 							String[] eachLine = words.split("	");
@@ -52,10 +47,10 @@ public class Main {
 							String[] valuesOfTraduc = traduc.split(",");
 							String ingles = eachLine[0].toLowerCase();
 							String espanol = valuesOfTraduc[0].toLowerCase();
-							thisThing.put(ingles, espanol);
+							hashMap.put(ingles, espanol);
 						}
-						
 						if(archivoTexto.exists()) {
+							System.out.println("\nDesea traducir lo siguiente: ");
 							Scanner translate = new Scanner(archivoTexto);
 							String sentence = translate.nextLine().toLowerCase();
 							System.out.println(sentence);
@@ -65,7 +60,7 @@ public class Main {
 							
 							for(int i=0;i<numOfWords;i++) {
 								String traduced = "";
-								String got = thisThing.get(eachWord[i]);
+								String got = hashMap.get(eachWord[i]);
 								if(got==null) {
 									traduced=("*")+eachWord[i]+("*");
 								}
@@ -73,8 +68,10 @@ public class Main {
 									traduced=got;
 								fSentence = fSentence + (" ") + traduced;
 							}
-							System.out.println("\nSu oracion traducida es "+fSentence);
+							System.out.println("\nSu oracion traducida es "+fSentence+"\n");
+							System.out.println("----------------------------------------------------------------------------------------");
 							translate.close();
+							
 						}
 						else
 							System.out.println("El archivo no se ha encontrado, usar el proporcionado por favor");
