@@ -3,7 +3,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class Pruebas {
-	hashMap<String,String> hash = new hashMap<String,String>();
+	HashMapp<String,String> hash = new HashMapp<String,String>();
 	public String Test( ) {
 		String result = "";
 		hash.put("dog", "perro");

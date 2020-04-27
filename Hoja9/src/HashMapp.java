@@ -4,7 +4,7 @@
  * Hoja de trabajo 9 Estructura de Datos
  */
 import java.util.HashMap;
-public class hashMap <K,V> implements iMap <K ,V>{
+public class HashMapp <K,V> implements iMap <K ,V>{
 
 	protected HashMap<String,String> hashMap = new HashMap<String,String>();
 	

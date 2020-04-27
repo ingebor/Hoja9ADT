@@ -9,9 +9,9 @@ public class Factory<K,V>{
 	public iMap<String,String> getType(int option) {
 		switch(option) {
 		case 1:
-			return new hashMap<String,String>();
+			return new HashMapp<String,String>();
 		default:
-			return new hashMap<String,String>();
+			return new HashMapp<String,String>();
 		}
 	}
 }
