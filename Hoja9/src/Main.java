@@ -37,8 +37,8 @@ public class Main {
 				System.out.println("¿De que forma desea realizar la traduccion? \n1. HashMap \n2. SplayTree");
 				try {
 					int option = read.nextInt();
-					if(option<1 || option>3) {
-						System.out.println("No ha ingresado una opcion correcta");
+					if(option<1 || option>2) {
+						System.out.println("No ha ingresado una opcion correcta, intentelo de nuevo por favor\n");
 					}
 					else if(option==1 || option==2) {
 						iMap<String,String> thisThing = factory.getType(option);
