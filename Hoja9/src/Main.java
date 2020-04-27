@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.HashMap;
 
 /**
- * @author Ingebor Rubio 19003, Pablo Reyna 19
+ * @author Ingebor Rubio 19003, Pablo Reyna 19822
  * @date 26/04/2020
  * Hoja de trabajo 9 Estructura de Datos
  */
@@ -16,7 +16,7 @@ public class Main {
 	 * @param args
 	 * @throws Exception 
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({ })
 	public static void main(String[] args) throws Exception {
 		Factory<String,String> factory = new Factory<String,String>();
 		File archivoSpanish = new File("Spanish.txt");

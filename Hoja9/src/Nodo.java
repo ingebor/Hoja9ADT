@@ -1,3 +1,9 @@
+/**
+ * @author Ingebor Rubio 19003, Pablo Reyna 19822
+ * @date 26/04/2020
+ * Hoja de trabajo 9 Estructura de Datos
+ */
+
 public class Nodo<E> {
     Association<String, String> value;
     Nodo<E> parent;
@@ -27,34 +33,67 @@ public class Nodo<E> {
         }
     }
 
+    /**
+     * getEspaniol
+     * @return
+     */
     public String getEspanol(){
         return value.getValue();
     }
 
+    /**
+     * getIngles
+     * @return
+     */
     public String getIngles(){
         return value.getKey();
     }
 
+    /**
+     * getAssociation
+     * @return
+     */
     public Association getAssociation(){
         return value;
     }
 
+    /**
+     * izquierdo
+     * @return
+     */
     public Nodo getLeft(){
         return left;
     }
 
+    /**
+     * Derecho
+     * @return
+     */
     public Nodo getRight(){
         return  right;
     }
 
+    /**
+     * definir izquierdo
+     * @param left
+     */
     public void setLeft(Nodo left){
         this.left = left;
     }
 
+    /**
+     * Definir derecho
+     * @param right
+     */
     public void setRight(Nodo right){
         this.right = right;
     }
 
+    /**
+     * Buscar
+     * @param value
+     * @return
+     */
     public String search(String value){
         if (value.equals(this.value.getKey())){
             return this.value.theValue;

@@ -1,4 +1,8 @@
-
+/**
+ * @author Ingebor Rubio 19003, Pablo Reyna 19822
+ * @date 26/04/2020
+ * Hoja de trabajo 9 Estructura de Datos
+ */
 
 public class SplayTree<E extends Comparable<E>> {
     private Nodo<E> raiz;
@@ -7,18 +11,35 @@ public class SplayTree<E extends Comparable<E>> {
         raiz = null;
     }
 
+    /**
+     * is empty
+     * @return si esta vacio
+     */
     public boolean isEmpty(){
         return raiz == null;
     }
 
+    /**
+     * Raiz
+     * @return la raiz
+     */
     public Nodo<E> getRaiz(){
         return raiz;
     }
 
+    /**
+     * Definir una raiz
+     * @param raiz
+     */
     public void setRaiz(Nodo<E> raiz){
         this.raiz = raiz;
     }
 
+    /**
+     * agregar un nodo
+     * @param node
+     * @param raiz
+     */
     public void addNodo(Nodo node,Nodo raiz){
         if (raiz == null){
             this.setRaiz(node);
@@ -39,6 +60,11 @@ public class SplayTree<E extends Comparable<E>> {
         }
     }
 
+    /**
+     * Rotar nodo a la izquierda
+     * @param c
+     * @param p
+     */
     public void rotateLeft(Nodo c, Nodo p){
         if ((c ==null)||(p == null) ||(p.parent !=c)||(c.parent != p)){
             throw new RuntimeException("Error");
@@ -60,6 +86,11 @@ public class SplayTree<E extends Comparable<E>> {
         c.right = p;
     }
 
+    /**
+     * Rotar nodo a la derecha
+     * @param c
+     * @param p
+     */
     public void rotateRight(Nodo c, Nodo p){
         if ((c ==null)||(p == null) ||(p.right !=c)||(c.parent != p)){
             throw new RuntimeException("Error");
@@ -81,6 +112,10 @@ public class SplayTree<E extends Comparable<E>> {
         c.left = p;
     }
 
+    /**
+     * Splay
+     * @param x
+     */
     private void Splay(Nodo x){
         while (x.parent != null){
             Nodo parent = x.parent;
@@ -114,6 +149,11 @@ public class SplayTree<E extends Comparable<E>> {
         raiz = x;
     }
 
+    /**
+     * Buscar
+     * @param palabra
+     * @return traduccion
+     */
     public String buscar(String palabra){
         if (raiz == null){
             return "*" + palabra + "*";
