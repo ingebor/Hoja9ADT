@@ -1,14 +1,11 @@
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
-
 class Pruebas {
-	HashMapp<String,String> hash = new HashMapp<String,String>();
+	SplayTree<String> tree = new SplayTree<String>();
 	public String Test( ) {
 		String result = "";
-		hash.put("dog", "perro");
 		try {
-			result = hash.get("dog");
+			result = tree.buscar("cat");
 		}
 		catch (Exception E) {
 			result = "Fallido";
@@ -19,7 +16,7 @@ class Pruebas {
 	@Test
 	void test() {
 		String resultado = Test();
-		String esperado = "perro";
+		String esperado = "gato";
 		assertEquals(esperado,resultado);
 	}
 

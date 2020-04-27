@@ -5,6 +5,7 @@
  */
 
 public class SplayTree<E extends Comparable<E>> {
+	SplayTree<String> splay = new SplayTree<String>();
     private Nodo<E> raiz;
 
     public SplayTree(){
