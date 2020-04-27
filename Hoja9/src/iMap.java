@@ -1,13 +1,10 @@
 /**
- * 
+ * @author Ingebor Rubio 19003, Pablo Reyna 19
+ * @date 26/04/2020
+ * Hoja de trabajo 9 Estructura de Datos
  */
+public interface iMap<K,V> {
 
-/**
- * @author Ingebor Rubio
- *
- */
-public interface iMap<K extends Comparable<K>,V> {
-
-	public void put(K key, V value);
-	public String get(K key);
+	public void put(String key, String value);
+	public String get(String key);
 }

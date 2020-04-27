@@ -1,14 +1,17 @@
 /**
- * @author Ingebor Rubio
- *
+ * @author Ingebor Rubio 19003, Pablo Reyna 19
+ * @date 26/04/2020
+ * Hoja de trabajo 9 Estructura de Datos
  */
-public class Factory<K extends Comparable<K>,V>{
+public class Factory<K,V>{
 
-	public iMap<K,V> getType(int option) {
-		if(option==1) {
-			return new HashMap<K,V>();
+	
+	public iMap<String,String> getType(int option) {
+		switch(option) {
+		case 1:
+			return new hashMap<String,String>();
+		default:
+			return new hashMap<String,String>();
 		}
-		else
-			return null;
 	}
 }

@@ -18,7 +18,7 @@ public class Main {
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void main(String[] args) throws Exception {
-		Factory factory = new Factory();
+		Factory<String,String> factory = new Factory<String,String>();
 		File archivoSpanish = new File("Spanish.txt");
 		File archivoTexto = new File("texto.txt");
 		FileReader fileR = new FileReader(archivoSpanish);
@@ -34,7 +34,7 @@ public class Main {
 			String words="";
 			boolean flag = true;
 			while(flag) {
-				System.out.println("¿De que forma desea realizar la traduccion? \n1. HashMap \n2. SplayTree \n3. Deseo salir del programa");
+				System.out.println("¿De que forma desea realizar la traduccion? \n1. HashMap \n2. SplayTree");
 				try {
 					int option = read.nextInt();
 					if(option<1 || option>3) {
@@ -42,7 +42,6 @@ public class Main {
 					}
 					else if(option==1 || option==2) {
 						iMap<String,String> thisThing = factory.getType(option);
-						
 						while((words = buffR.readLine())!=null){
 							String[] eachLine = words.split("	");
 							String traduc = eachLine[1];
@@ -70,22 +69,19 @@ public class Main {
 									traduced=got;
 								fSentence = fSentence + (" ") + traduced;
 							}
-							System.out.println("\nSu oracion traducida es: "+fSentence+"\n");
-							System.out.println("----------------------------------------------------------------------------------------");
+							System.out.println("\nSu oracion traducida es: "+fSentence);
+							System.out.println("Gracias por utilizar el programa");
 							translate.close();
-							
+							flag=false;
 						}
 						else
 							System.out.println("El archivo no se ha encontrado, usar el proporcionado por favor");
 					}
-					else if(option==3) {
-						System.out.println("Saliendo, gracias por utilizar el programa");
-						flag = false;
-					}
 
 				}
 				catch(Exception E) {
-					System.out.println("error");
+					System.out.println("No ha ingresado un dato valido, intente correr el programa de nuevo por favor");
+					flag=false;
 				}
 			}
 		}

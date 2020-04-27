@@ -1,18 +1,20 @@
 /**
- * @author Ingebor Rubio
- *
+ * @author Ingebor Rubio 19003, Pablo Reyna 19
+ * @date 26/04/2020
+ * Hoja de trabajo 9 Estructura de Datos
  */
-public class HashMap <K extends Comparable<K>,V> implements iMap <K ,V>{
+import java.util.HashMap;
+public class hashMap <K,V> implements iMap <K ,V>{
 
-	protected HashMap<Association> hashMap;
+	protected HashMap<String,String> hashMap = new HashMap<String,String>();
 	
 	@Override
-	public void put(K key,V value) {
+	public void put(String key,String value) {
 		hashMap.put(key,value);
 	}
 	
 	@Override
-	public String get(K key) {
+	public String get(String key) {
 		return hashMap.get(key);
 	}
 
